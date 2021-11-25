@@ -7,7 +7,7 @@ public class IndexController {
         return "index";
     }
 
-    public String oupsHandler(){
+    public String oopsHandler(){
         return "notimplemented";
     }
 }
