@@ -20,6 +20,7 @@ class IndexControllerTest {
         assertEquals("index", controller.index(), "Wrong view returned!");
         assertEquals("index", controller.index(), () -> "Wrong with lambda message!");
         // assertEquals("indexd", controller.index(), "Wrong view returned!");
+        assertNotEquals("indexd", controller.index(), "Wrong view returned!");
     }
 
     @Test
