@@ -8,6 +8,7 @@ import org.junit.jupiter.api.condition.*;
 
 import java.time.Duration;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assumptions.assumeTrue;
 
@@ -28,6 +29,9 @@ class IndexControllerTest {
         assertEquals("index", controller.index(), () -> "Wrong with lambda message!");
         // assertEquals("indexd", controller.index(), "Wrong view returned!");
         assertNotEquals("indexd", controller.index(), "Wrong view returned!");
+
+        // after adding dependency: assertj comes assertThat ...
+        assertThat(controller.index()).isEqualTo("index"); // this is an assertj assertion!
     }
 
     @Disabled
