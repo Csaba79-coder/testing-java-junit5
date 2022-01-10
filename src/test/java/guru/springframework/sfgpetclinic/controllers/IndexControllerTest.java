@@ -5,6 +5,8 @@ import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.time.Duration;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class IndexControllerTest {
@@ -26,7 +28,7 @@ class IndexControllerTest {
         assertNotEquals("indexd", controller.index(), "Wrong view returned!");
     }
 
-    /*
+    @Disabled
     @DisplayName(value = "Test exception")
     // after implementation see bellow!
     @Test
@@ -36,13 +38,34 @@ class IndexControllerTest {
         assertFalse("asdf".equals(controller.oopsHandler()), () -> "This is some expensive message tp build for my test");
 
     }
-    */
 
     @DisplayName(value = "Test exception after implementation")
     @Test
     void oopsHandler() {
         assertThrows(ValueNotFoundException.class, () -> {
             controller.oopsHandler();
+        });
+    }
+
+    @Disabled(value = "Demo of time out!")
+    @Test
+    void testTimeOut() {
+
+        assertTimeout(Duration.ofMillis(100), () -> {
+            Thread.sleep(5000); // this one will run 5 sec!
+
+            System.out.println("I got here"); // prints this one!
+        });
+    }
+
+    @Disabled(value = "Demo of time out preempt!")
+    @Test
+    void testTimeOutPreempt() {
+
+        assertTimeoutPreemptively(Duration.ofMillis(100), () -> {
+            Thread.sleep(5000); // this one runs only 116 millis!
+
+            System.out.println("I got here Preempt"); // does not print anything!
         });
     }
 }
