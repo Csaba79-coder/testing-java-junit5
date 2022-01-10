@@ -26,12 +26,23 @@ class IndexControllerTest {
         assertNotEquals("indexd", controller.index(), "Wrong view returned!");
     }
 
+    /*
     @DisplayName(value = "Test exception")
+    // after implementation see bellow!
     @Test
-    void oopsHandler() {
+    void oopsHandlerTest() {
         // assertTrue("asdf".equals(controller.oopsHandler()), () -> "This is some expensive message tp build for my test");
         assertTrue("notImplemented".equals(controller.oopsHandler()), () -> "This is some expensive message tp build for my test");
         assertFalse("asdf".equals(controller.oopsHandler()), () -> "This is some expensive message tp build for my test");
 
+    }
+    */
+
+    @DisplayName(value = "Test exception after implementation")
+    @Test
+    void oopsHandler() {
+        assertThrows(ValueNotFoundException.class, () -> {
+            controller.oopsHandler();
+        });
     }
 }

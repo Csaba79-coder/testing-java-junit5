@@ -7,7 +7,8 @@ public class IndexController {
         return "index";
     }
 
-    public String oopsHandler(){
-        return "notImplemented";
+    public String oopsHandler() {
+        // return "notImplemented";
+        throw new ValueNotFoundException();
     }
 }
