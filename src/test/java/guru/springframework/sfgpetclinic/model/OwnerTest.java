@@ -2,6 +2,8 @@ package guru.springframework.sfgpetclinic.model;
 
 import org.junit.jupiter.api.Test;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.is;
 import static org.junit.jupiter.api.Assertions.*;
 
 class OwnerTest {
@@ -25,5 +27,8 @@ class OwnerTest {
                             () -> assertEquals("+1-011-555-0000", owner.getTelephone(),
                                     "Telephone did not match")
                 ));
+
+        //hamcrest uses assertThat() as well as in IndexControllerTest class!
+        assertThat(owner.getCity(), is("Key West")); // this one uses Hamcrest
     }
 }
