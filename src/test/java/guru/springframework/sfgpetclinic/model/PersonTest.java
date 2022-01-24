@@ -1,9 +1,7 @@
 package guru.springframework.sfgpetclinic.model;
 
 import guru.springframework.sfgpetclinic.ModelTests;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.RepeatedTest;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -42,5 +40,12 @@ class PersonTest implements ModelTests {
     // @Test
     void myRepeatedTest() {
         // TODO - impl
+    }
+
+    @RepeatedTest(value = 5, name = "{displayName}")
+    @DisplayName("Repeated test with DI")
+    void myRepeatedTestWithDI(TestInfo testInfo, RepetitionInfo repetitionInfo) { // DI - dependency injection
+        System.out.println(testInfo.getDisplayName() + ": " + repetitionInfo.getCurrentRepetition() +
+                " - " + repetitionInfo.getTotalRepetitions());
     }
 }
