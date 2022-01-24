@@ -2,6 +2,8 @@ package guru.springframework.sfgpetclinic.model;
 
 import guru.springframework.sfgpetclinic.ModelTests;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
@@ -32,5 +34,12 @@ class OwnerTest implements ModelTests {
 
         //hamcrest uses assertThat() as well as in IndexControllerTest class!
         assertThat(owner.getCity(), is("Key West")); // this one uses Hamcrest
+    }
+
+    // great for testing credit card -> the first 4 number says the type of the card etc.
+    @ParameterizedTest
+    @ValueSource(strings = {"Spring", "Framework", "Guru"})
+    void testValueSource(String value) {
+        System.out.println(value);
     }
 }
